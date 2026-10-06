@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ 
+<title>BRUSH and BID - Online Art Auction Platform</title>
+
+<link rel="stylesheet" href="style.css">
+ 
+
+</head>
+
+<body>
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+ 
+<div class="logo">
+    <h1>BRUSH and BID</h1>
+</div>
+
+<nav>
+    <ul id="navbar">
+
+        <li>
+            <a class="active" href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="about.html">About</a>
+        </li>
+
+        <li>
+            <a href="gallery.html">Gallery</a>
+        </li>
+
+        <li>
+            <a href="auctions.html">Auctions</a>
+        </li>
+
+        <!-- Role-based menu is created by script.js -->
+        <li id="roleMenu"></li>
+
+    </ul>
+</nav>
+
+
+<!-- =================================================
+     RIGHT SIDE
+================================================= -->
+
+<div class="header-right">
+
+    <!-- Login -->
+    <button
+        class="login-top-btn"
+        id="loginBtn"
+        type="button"
+        onclick="openLogin()">
+        Login
+    </button>
+
+
+    <!-- Profile -->
+    <div
+        class="profile-area"
+        id="profileArea"
+        style="display:none;">
+
+        <div
+            class="profile-icon profile-initial"
+            id="profileIcon"
+            onclick="toggleProfileMenu()">
+            U
+        </div>
+
+
+        <div
+            class="profile-dropdown"
+            id="profileMenu">
+
+            <h3 id="profileName">
+                User Name
+            </h3>
+
+            <p id="profileRole">
+                Bidder
+            </p>
+
+            <small id="profileEmail"></small>
+
+            <hr>
+
+            <a
+                href="#"
+                id="profilePage">
+                My Profile
+            </a>
+
+            <button
+                type="button"
+                onclick="logoutUser()">
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+ 
+
+</header>
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+ 
+<div class="hero-content">
+
+    <h2>
+        Welcome to BRUSH and BID
+    </h2>
+
+    <p>
+        Buy, Sell and Bid on amazing artworks from talented artists.
+        Participate in weekly live auctions and discover unique
+        paintings from across the country.
+    </p>
+
+    <a
+        class="btn"
+        href="gallery.html">
+        Explore Gallery
+    </a>
+
+</div>
+ 
+
+</section>
+
+<!-- =====================================================
+     FEATURES
+===================================================== -->
+
+<section class="features">
+
+ 
+<div class="card">
+
+    <h3>
+        Gallery
+    </h3>
+
+    <p>
+        Explore hundreds of artworks uploaded by talented artists.
+    </p>
+
+</div>
+
+
+<div class="card">
+
+    <h3>
+        Weekly Auctions
+    </h3>
+
+    <p>
+        Bid on one selected artwork every week for 24 hours.
+    </p>
+
+</div>
+
+
+<div class="card">
+
+    <h3>
+        Artists
+    </h3>
+
+    <p>
+        Upload your artwork and connect with collectors.
+    </p>
+
+</div>
+
+
+<div class="card">
+
+    <h3>
+        Secure Bidding
+    </h3>
+
+    <p>
+        Transparent bidding system with live highest bids.
+    </p>
+
+</div>
+ 
+
+</section>
+
+<!-- =====================================================
+     ABOUT HOME
+===================================================== -->
+
+<section class="about-home">
+
+ 
+<h2>
+    Why Choose BRUSH and BID?
+</h2>
+
+<p>
+    BRUSH and BID is a complete online art auction platform where
+    artists showcase creativity and bidders purchase unique
+    masterpieces through transparent weekly auctions.
+</p>
+ 
+
+</section>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+ 
+<p>
+    © 2026 BRUSH and BID | Online Art Auction Platform
+</p>
+ 
+
+</footer>
+
+<!-- =====================================================
+     LOGIN POPUP
+===================================================== -->
+
+<div
+    class="popup"
+    id="loginPopup">
+
+ 
+<div class="popup-box">
+
+    <span
+        class="close"
+        onclick="closeLogin()">
+        ×
+    </span>
+
+    <h2>
+        Login
+    </h2>
+
+
+    <form id="loginForm">
+
+        <label for="loginEmail">
+            Email
+        </label>
+
+        <input
+            id="loginEmail"
+            type="email"
+            placeholder="example@gmail.com"
+            required>
+
+
+        <label for="loginPassword">
+            Password
+        </label>
+
+        <input
+            id="loginPassword"
+            type="password"
+            placeholder="Enter Password"
+            required>
+
+
+        <label for="loginRole">
+            Login As
+        </label>
+
+        <select
+            id="loginRole"
+            required>
+
+            <option value="">
+                Select Role
+            </option>
+
+            <option value="Bidder">
+                Bidder
+            </option>
+
+            <option value="Artist">
+                Artist
+            </option>
+
+        </select>
+
+
+        <button type="submit">
+            Login
+        </button>
+
+    </form>
+
+
+    <p>
+        Don't have an account?
+
+        <a
+            href="#"
+            onclick="openRegister(); closeLogin(); return false;">
+            Register
+        </a>
+    </p>
+
+</div>
+ 
+
+</div>
+
+<!-- =====================================================
+     REGISTER POPUP
+===================================================== -->
+
+<div
+    class="popup"
+    id="registerPopup">
+
+ 
+<div class="popup-box">
+
+    <span
+        class="close"
+        onclick="closeRegister()">
+        ×
+    </span>
+
+    <h2>
+        Create Account
+    </h2>
+
+
+    <form id="registerForm">
+
+        <!-- Full Name -->
+
+        <label for="regName">
+            Full Name
+        </label>
+
+        <input
+            id="regName"
+            type="text"
+            placeholder="Enter Full Name"
+            required>
+
+        <small
+            class="error"
+            id="nameError">
+        </small>
+
+
+        <!-- Email -->
+
+        <label for="regEmail">
+            Email Address
+        </label>
+
+        <input
+            id="regEmail"
+            type="email"
+            placeholder="example@gmail.com"
+            required>
+
+        <small
+            class="error"
+            id="emailError">
+        </small>
+
+
+        <!-- Phone -->
+
+        <label for="regPhone">
+            Phone Number
+        </label>
+
+        <input
+            id="regPhone"
+            type="text"
+            maxlength="10"
+            placeholder="9876543210"
+            required>
+
+        <small
+            class="error"
+            id="phoneError">
+        </small>
+
+
+        <!-- Role -->
+
+        <label for="regRole">
+            User Type
+        </label>
+
+        <select
+            id="regRole"
+            required>
+
+            <option value="">
+                Select User
+            </option>
+
+            <option value="Bidder">
+                Bidder
+            </option>
+
+            <option value="Artist">
+                Artist
+            </option>
+
+        </select>
+
+
+        <!-- Password -->
+
+        <label for="regPassword">
+            Password
+        </label>
+
+        <input
+            id="regPassword"
+            type="password"
+            placeholder="Password"
+            required>
+
+        <small class="hint">
+            Password must contain • 8 Characters •
+            1 Uppercase Letter • 1 Lowercase Letter •
+            1 Number • 1 Special Character
+        </small>
+
+        <small
+            class="error"
+            id="passwordError">
+        </small>
+
+
+        <!-- Confirm Password -->
+
+        <label for="confirmPassword">
+            Confirm Password
+        </label>
+
+        <input
+            id="confirmPassword"
+            type="password"
+            placeholder="Confirm Password"
+            required>
+
+        <small
+            class="error"
+            id="confirmError">
+        </small>
+
+
+        <!-- Terms -->
+
+        <div class="terms">
+
+            <input
+                id="terms"
+                type="checkbox"
+                required>
+
+            <label for="terms">
+
+                I agree to the
+
+                <a
+                    href="terms.html"
+                    class="policy-link">
+                    Terms & Conditions
+                </a>
+
+                and
+
+                <a
+                    href="privacy.html"
+                    class="policy-link">
+                    Privacy Policy
+                </a>
+
+            </label>
+
+        </div>
+
+
+        <button type="submit">
+            Register
+        </button>
+
+    </form>
+
+
+    <p>
+
+        Already have an account?
+
+        <a
+            href="#"
+            onclick="openLogin(); closeRegister(); return false;">
+            Login
+        </a>
+
+    </p>
+
+</div>
+ 
+
+</div>
+
+<!-- =====================================================
+     OTP VERIFICATION POPUP
+===================================================== -->
+
+<div
+    class="popup"
+    id="otpPopup">
+
+ 
+<div class="popup-box">
+
+    <span
+        class="close"
+        onclick="closeOTP()">
+        ×
+    </span>
+
+    <h2>
+        Verify Your Email
+    </h2>
+
+    <p>
+        We have sent a 6-digit OTP to:
+    </p>
+
+    <strong id="otpEmailDisplay">
+        your email
+    </strong>
+
+
+    <form id="otpForm">
+
+        <label for="otpCode">
+            Enter OTP
+        </label>
+
+        <input
+            id="otpCode"
+            type="text"
+            maxlength="6"
+            inputmode="numeric"
+            pattern="[0-9]{6}"
+            placeholder="Enter 6-digit OTP"
+            required>
+
+
+        <small
+            class="error"
+            id="otpError">
+        </small>
+
+
+        <button type="submit">
+            Verify Email
+        </button>
+
+    </form>
+
+
+    <p>
+        Didn't receive the OTP?
+    </p>
+
+    <button
+        type="button"
+        id="resendOtpBtn"
+        onclick="resendOTP()">
+        Resend OTP
+    </button>
+
+</div>
+ 
+
+</div>
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* =====================================================
+   API CONFIGURATION
+===================================================== */
+
+const API_BASE = "http://localhost:5000";
+
+
+/* =====================================================
+   POPUP FUNCTIONS
+===================================================== */
+
+function openLogin() {
+
+    const popup = document.getElementById("loginPopup");
+
+    if (popup) {
+        popup.style.display = "flex";
+    }
+}
+
+
+function closeLogin() {
+
+    const popup = document.getElementById("loginPopup");
+
+    if (popup) {
+        popup.style.display = "none";
+    }
+}
+
+
+function openRegister() {
+
+    const popup = document.getElementById("registerPopup");
+
+    if (popup) {
+        popup.style.display = "flex";
+    }
+}
+
+
+function closeRegister() {
+
+    const popup = document.getElementById("registerPopup");
+
+    if (popup) {
+        popup.style.display = "none";
+    }
+}
+
+
+function openOTP() {
+
+    const popup = document.getElementById("otpPopup");
+
+    if (popup) {
+        popup.style.display = "flex";
+    }
+}
+
+
+function closeOTP() {
+
+    const popup = document.getElementById("otpPopup");
+
+    if (popup) {
+        popup.style.display = "none";
+    }
+}
+
+
+/* =====================================================
+   VALIDATION
+===================================================== */
+
+const nameRegex =
+    /^[A-Za-z ]{3,40}$/;
+
+const emailRegex =
+    /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+
+const phoneRegex =
+    /^[6-9][0-9]{9}$/;
+
+const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+
+
+/* =====================================================
+   REGISTER
+===================================================== */
+
+document
+.getElementById("registerForm")
+.addEventListener("submit", async function (e) {
+
+    e.preventDefault();
+
+
+    const name =
+        document.getElementById("regName")
+        .value
+        .trim();
+
+
+    const email =
+        document.getElementById("regEmail")
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    const phone =
+        document.getElementById("regPhone")
+        .value
+        .trim();
+
+
+    const role =
+        document.getElementById("regRole")
+        .value;
+
+
+    const password =
+        document.getElementById("regPassword")
+        .value;
+
+
+    const confirmPassword =
+        document.getElementById("confirmPassword")
+        .value;
+
+
+    /* Clear previous errors */
+
+    document.getElementById("nameError").textContent = "";
+
+    document.getElementById("emailError").textContent = "";
+
+    document.getElementById("phoneError").textContent = "";
+
+    document.getElementById("passwordError").textContent = "";
+
+    document.getElementById("confirmError").textContent = "";
+
+
+    /* Name */
+
+    if (!nameRegex.test(name)) {
+
+        document.getElementById("nameError")
+            .textContent =
+            "Only alphabets and spaces are allowed.";
+
+        return;
+    }
+
+
+    /* Email */
+
+    if (!emailRegex.test(email)) {
+
+        document.getElementById("emailError")
+            .textContent =
+            "Enter a valid lowercase email.";
+
+        return;
+    }
+
+
+    /* Phone */
+
+    if (!phoneRegex.test(phone)) {
+
+        document.getElementById("phoneError")
+            .textContent =
+            "Enter a valid 10 digit phone number.";
+
+        return;
+    }
+
+
+    /* Role */
+
+    if (!["Bidder", "Artist"].includes(role)) {
+
+        alert("Please select Bidder or Artist.");
+
+        return;
+    }
+
+
+    /* Password */
+
+    if (!passwordRegex.test(password)) {
+
+        document.getElementById("passwordError")
+            .textContent =
+            "Password is not strong enough.";
+
+        return;
+    }
+
+
+    /* Confirm Password */
+
+    if (password !== confirmPassword) {
+
+        document.getElementById("confirmError")
+            .textContent =
+            "Passwords do not match.";
+
+        return;
+    }
+
+
+    const submitButton =
+        document.querySelector(
+            "#registerForm button[type='submit']"
+        );
+
+
+    try {
+
+        submitButton.disabled = true;
+
+        submitButton.textContent =
+            "Registering...";
+
+
+        const response =
+            await fetch(
+                API_BASE + "/api/register",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        full_name: name,
+
+                        name: name,
+
+                        email: email,
+
+                        phone: phone,
+
+                        role: role
+
+                            .toLowerCase(),
+
+                        password: password
+
+                    })
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.message ||
+                data.error ||
+                "Registration failed."
+            );
+        }
+
+
+        /*
+         * Save only temporary registration
+         * information required for OTP.
+         *
+         * Password is NOT stored here.
+         */
+
+        sessionStorage.setItem(
+            "pendingOtpEmail",
+            email
+        );
+
+
+        document.getElementById(
+            "otpEmailDisplay"
+        ).textContent = email;
+
+
+        closeRegister();
+
+        openOTP();
+
+
+        alert(
+            data.message ||
+            "Registration successful. Check your email for the OTP."
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "REGISTRATION ERROR:",
+            error
+        );
+
+        alert(
+            error.message ||
+            "Unable to register. Please try again."
+        );
+
+    }
+
+    finally {
+
+        submitButton.disabled = false;
+
+        submitButton.textContent =
+            "Register";
+
+    }
+
+});
+
+
+/* =====================================================
+   OTP VERIFICATION
+===================================================== */
+
+document
+.getElementById("otpForm")
+.addEventListener("submit", async function (e) {
+
+    e.preventDefault();
+
+
+    const email =
+        sessionStorage.getItem(
+            "pendingOtpEmail"
+        );
+
+
+    const otp =
+        document.getElementById("otpCode")
+        .value
+        .trim();
+
+
+    const otpError =
+        document.getElementById("otpError");
+
+
+    otpError.textContent = "";
+
+
+    if (!email) {
+
+        otpError.textContent =
+            "Registration session expired. Please register again.";
+
+        return;
+    }
+
+
+    if (!/^[0-9]{6}$/.test(otp)) {
+
+        otpError.textContent =
+            "Enter a valid 6-digit OTP.";
+
+        return;
+    }
+
+
+    const button =
+        document.querySelector(
+            "#otpForm button[type='submit']"
+        );
+
+
+    try {
+
+        button.disabled = true;
+
+        button.textContent =
+            "Verifying...";
+
+
+        const response =
+            await fetch(
+                API_BASE + "/api/verify-otp",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        email: email,
+
+                        otp: otp
+
+                    })
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.message ||
+                data.error ||
+                "OTP verification failed."
+            );
+        }
+
+
+        sessionStorage.removeItem(
+            "pendingOtpEmail"
+        );
+
+
+        closeOTP();
+
+
+        document.getElementById(
+            "otpCode"
+        ).value = "";
+
+
+        alert(
+            data.message ||
+            "Email verified successfully. You can now login."
+        );
+
+
+        openLogin();
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "OTP VERIFICATION ERROR:",
+            error
+        );
+
+        otpError.textContent =
+            error.message ||
+            "Invalid or expired OTP.";
+
+    }
+
+    finally {
+
+        button.disabled = false;
+
+        button.textContent =
+            "Verify Email";
+
+    }
+
+});
+
+
+/* =====================================================
+   RESEND OTP
+===================================================== */
+
+async function resendOTP() {
+
+    const email =
+        sessionStorage.getItem(
+            "pendingOtpEmail"
+        );
+
+
+    if (!email) {
+
+        alert(
+            "Registration session expired. Please register again."
+        );
+
+        closeOTP();
+
+        openRegister();
+
+        return;
+    }
+
+
+    const button =
+        document.getElementById(
+            "resendOtpBtn"
+        );
+
+
+    try {
+
+        button.disabled = true;
+
+        button.textContent =
+            "Sending...";
+
+
+        const response =
+            await fetch(
+                API_BASE + "/api/resend-otp",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        email: email
+
+                    })
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.message ||
+                data.error ||
+                "Unable to resend OTP."
+            );
+        }
+
+
+        alert(
+            data.message ||
+            "A new OTP has been sent to your email."
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "RESEND OTP ERROR:",
+            error
+        );
+
+        alert(
+            error.message ||
+            "Unable to resend OTP."
+        );
+
+    }
+
+    finally {
+
+        button.disabled = false;
+
+        button.textContent =
+            "Resend OTP";
+
+    }
+
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+document
+.getElementById("loginForm")
+.addEventListener("submit", async function (e) {
+
+    e.preventDefault();
+
+
+    const email =
+        document.getElementById("loginEmail")
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    const password =
+        document.getElementById("loginPassword")
+        .value;
+
+
+    const role =
+        document.getElementById("loginRole")
+        .value;
+
+
+    if (!["Bidder", "Artist"].includes(role)) {
+
+        alert(
+            "Please select Bidder or Artist."
+        );
+
+        return;
+    }
+
+
+    const button =
+        document.querySelector(
+            "#loginForm button[type='submit']"
+        );
+
+
+    try {
+
+        button.disabled = true;
+
+        button.textContent =
+            "Logging in...";
+
+
+        const response =
+            await fetch(
+                API_BASE + "/api/login",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        email: email,
+
+                        password: password,
+
+                        role: role.toLowerCase()
+
+                    })
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.message ||
+                data.error ||
+                "Invalid login credentials."
+            );
+        }
+
+
+        const user =
+            data.user || data;
+
+
+        /*
+         * Store session information.
+         *
+         * Password is NEVER stored.
+         */
+
+        localStorage.setItem(
+            "loggedIn",
+            "true"
+        );
+
+
+        localStorage.setItem(
+            "userId",
+            user.user_id ||
+            user.userId ||
+            user.id ||
+            ""
+        );
+
+
+        localStorage.setItem(
+            "userName",
+            user.full_name ||
+            user.name ||
+            "User"
+        );
+
+
+        localStorage.setItem(
+            "userEmail",
+            user.email ||
+            email
+        );
+
+
+        localStorage.setItem(
+            "userRole",
+            normalizeRole(
+                user.role || role
+            )
+        );
+
+
+        localStorage.setItem(
+            "userPhone",
+            user.phone ||
+            ""
+        );
+
+
+        closeLogin();
+
+
+        alert(
+            "Welcome " +
+            (
+                user.full_name ||
+                user.name ||
+                "User"
+            )
+        );
+
+
+        /*
+         * Refresh the homepage so the
+         * profile and role menu appear.
+         */
+
+        location.reload();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "LOGIN ERROR:",
+            error
+        );
+
+        alert(
+            error.message ||
+            "Invalid login credentials."
+        );
+
+    }
+
+    finally {
+
+        button.disabled = false;
+
+        button.textContent =
+            "Login";
+
+    }
+
+});
+
+
+/* =====================================================
+   ROLE NORMALIZATION
+===================================================== */
+
+function normalizeRole(role) {
+
+    const value =
+        String(role || "")
+        .toLowerCase();
+
+
+    if (value === "artist") {
+        return "Artist";
+    }
+
+
+    if (value === "bidder") {
+        return "Bidder";
+    }
+
+
+    if (value === "admin") {
+        return "Admin";
+    }
+
+
+    return role;
+}
+
+
+/* =====================================================
+   LOAD LOGGED-IN USER
+===================================================== */
+
+function loadLoggedInUser() {
+
+    const loggedIn =
+        localStorage.getItem(
+            "loggedIn"
+        );
+
+
+    if (loggedIn !== "true") {
+
+        return;
+    }
+
+
+    const loginButton =
+        document.getElementById(
+            "loginBtn"
+        );
+
+
+    const profileArea =
+        document.getElementById(
+            "profileArea"
+        );
+
+
+    if (loginButton) {
+
+        loginButton.style.display =
+            "none";
+    }
+
+
+    if (profileArea) {
+
+        profileArea.style.display =
+            "flex";
+    }
+
+
+    const name =
+        localStorage.getItem(
+            "userName"
+        ) ||
+        "User";
+
+
+    const email =
+        localStorage.getItem(
+            "userEmail"
+        ) ||
+        "";
+
+
+    const role =
+        normalizeRole(
+            localStorage.getItem(
+                "userRole"
+            )
+        );
+
+
+    const profileName =
+        document.getElementById(
+            "profileName"
+        );
+
+
+    const profileEmail =
+        document.getElementById(
+            "profileEmail"
+        );
+
+
+    const profileRole =
+        document.getElementById(
+            "profileRole"
+        );
+
+
+    const profileIcon =
+        document.getElementById(
+            "profileIcon"
+        );
+
+
+    if (profileName) {
+
+        profileName.textContent =
+            name;
+    }
+
+
+    if (profileEmail) {
+
+        profileEmail.textContent =
+            email;
+    }
+
+
+    if (profileRole) {
+
+        profileRole.textContent =
+            role;
+    }
+
+
+    if (profileIcon) {
+
+        profileIcon.textContent =
+            name
+                .trim()
+                .charAt(0)
+                .toUpperCase() ||
+            "U";
+    }
+
+
+    /* Profile page */
+
+    const profilePage =
+        document.getElementById(
+            "profilePage"
+        );
+
+
+    if (profilePage) {
+
+        if (role === "Bidder") {
+
+            profilePage.href =
+                "bidderprofile.html";
+
+        }
+
+        else if (role === "Artist") {
+
+            profilePage.href =
+                "artistprofile.html";
+
+        }
+
+        else if (role === "Admin") {
+
+            profilePage.href =
+                "admindashboard.html";
+
+        }
+
+    }
+
+}
+
+
+/* =====================================================
+   PROFILE MENU
+===================================================== */
+
+function toggleProfileMenu() {
+
+    const menu =
+        document.getElementById(
+            "profileMenu"
+        );
+
+
+    if (!menu) {
+        return;
+    }
+
+
+    if (
+        menu.classList.contains("show")
+    ) {
+
+        menu.classList.remove("show");
+
+    }
+
+    else {
+
+        menu.classList.add("show");
+
+    }
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logoutUser() {
+
+    localStorage.removeItem(
+        "loggedIn"
+    );
+
+    localStorage.removeItem(
+        "userId"
+    );
+
+    localStorage.removeItem(
+        "user_id"
+    );
+
+    localStorage.removeItem(
+        "userName"
+    );
+
+    localStorage.removeItem(
+        "userEmail"
+    );
+
+    localStorage.removeItem(
+        "userRole"
+    );
+
+    localStorage.removeItem(
+        "userPhone"
+    );
+
+
+    window.location.href =
+        "index.html";
+}
+
+
+/* =====================================================
+   PROFILE / DROPDOWN OUTSIDE CLICK
+===================================================== */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        const profileArea =
+            document.getElementById(
+                "profileArea"
+            );
+
+
+        const profileMenu =
+            document.getElementById(
+                "profileMenu"
+            );
+
+
+        if (
+            profileArea &&
+            profileMenu &&
+            !profileArea.contains(
+                event.target
+            )
+        ) {
+
+            profileMenu.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   CLOSE POPUPS WHEN CLICKING OUTSIDE
+===================================================== */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        const popups =
+            document.querySelectorAll(
+                ".popup"
+            );
+
+
+        popups.forEach(function (popup) {
+
+            if (
+                event.target === popup
+            ) {
+
+                popup.style.display =
+                    "none";
+
+            }
+
+        });
+
+    }
+);
+
+
+/* =====================================================
+   ESCAPE KEY
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (event.key !== "Escape") {
+            return;
+        }
+
+
+        closeLogin();
+
+        closeRegister();
+
+        closeOTP();
+
+        if (typeof closePolicy === "function") {
+
+            closePolicy();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        loadLoggedInUser();
+
+    }
+);
+
+</script>
+
+<!-- =====================================================
+     SHARED SCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
