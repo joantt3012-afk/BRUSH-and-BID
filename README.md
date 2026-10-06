@@ -76,10 +76,8 @@ Brush-and-Bid/
 
 ### 1. Clone the repository
 
-Replace the example URL below with the actual URL of your GitHub repository.
-
 ```bash
-git clone https://github.com/iamnavyagowda/brush-and-bid.git
+git clone https://github.com/brush-and-bid.git
 ```
 
 ### 2. Open the project folder
