@@ -17,10 +17,10 @@ CREATE TABLE IF NOT EXISTS admin_emails (
 
 INSERT INTO users (full_name, email, password_hash, role, status, email_verified)
 VALUES
-('Joan Tressa Thomas', 'joantressathomas5@gmail.com', '$2b$10$QfSKHpeUHeut7bR7HqUvDec5xq3FFZNVB7ZzZRUBdReX91hTB5WIy', 'admin', 'Active', TRUE),
-('Supritha raju s', 'supritharaju550@gmail.com', '$2b$10$4Ec8YQeId1TLP7LW6elLL.bWVYB9M63ZtVx5Fgd29tBQj6Q.Xi1fC', 'admin', 'Active', TRUE),
-('Navya Gowda', 'navyagowda8924@gmail.com', '$2b$10$OqvTnVcM73XVQQFjD0kHLOvV8k7FfwTSm1ltrY3dQthZlaSSMqYsS', 'admin', 'Active', TRUE),
-('Arpita Sharon', 'arpitasharon08@gmail.com', '$2b$10$jZv6uEyF/rSICTNruTpOcubdIuRGIr.zJt3My6umLxJuAYfwP7ecS', 'admin', 'Active', TRUE);
+('Joan Tressa Thomas', 'joantressathomas5@gmail.com', '', 'admin', 'Active', TRUE),
+('Supritha raju s', 'supritharaju550@gmail.com', '', 'admin', 'Active', TRUE),
+('Navya Gowda', 'navyagowda8924@gmail.com', '', 'admin', 'Active', TRUE),
+('Arpita Sharon', 'arpitasharon08@gmail.com', '', 'admin', 'Active', TRUE);
 
 INSERT INTO admin_emails (email, status)
 VALUES
