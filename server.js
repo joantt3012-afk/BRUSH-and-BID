@@ -24,7 +24,7 @@ const PORT = 5000;
 const DB_CONFIG = {
     host: "localhost",
     user: "root",
-    password: "system",
+    password: "",
     database: "brush_and_bid",
     waitForConnections: true,
     connectionLimit: 10,
@@ -36,7 +36,7 @@ const DB_CONFIG = {
 // Leave the App Password blank if OTP should be shown
 // in the VS Code terminal.
 const GMAIL_USER = "joantressathomas5@gmail.com";
-const GMAIL_APP_PASSWORD = "pvjs yxuz lgak umyi";
+const GMAIL_APP_PASSWORD = "";
 
 // ============================================================
 // EXPRESS SETUP
